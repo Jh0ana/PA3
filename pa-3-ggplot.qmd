@@ -162,12 +162,13 @@ Building off of the plot you made in Step 7, add the location of the penguins ( 
 #| label: scatterplot-with-two-categorical-variables
 
 ggplot(data = penguins) +
-  geom_point(mapping = aes(x = bill_length_mm, y = bill_depth_mm, color=species, shape=island)) + 
+  geom_point(mapping = aes(x = bill_length_mm, y = bill_depth_mm, color=species)) + 
   geom_smooth(mapping = aes(x = bill_length_mm, y = bill_depth_mm),
               se=F) +
   labs(x="Bill Length (mm)",
        y="Bill Depth (mm)",
-       title="Bill Depth vs Length")
+       title="Bill Depth vs Length")+
+  facet_wrap(~island)
 ```
 
 # Canvas Quiz
