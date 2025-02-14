@@ -111,7 +111,9 @@ Use `ggplot2` to draw a barchart of different `species` included in the dataset.
 #| label: barchart
 
 ggplot(data = penguins) +
-  geom_bar(mapping = aes(x = species, fill = species))
+  geom_bar(mapping = aes(x = species, fill = species))+
+  labs(x="Penguin Species",
+       y="Number of Penguins")
 
 
 ```
@@ -125,7 +127,10 @@ Use `ggplot2` to create a scatterplot of the relationship between the bill lengt
 
 ggplot(data = penguins) +
   geom_point(mapping = aes(x = bill_length_mm, y = bill_depth_mm)) + 
-  geom_smooth(mapping = aes(x = bill_length_mm, y = bill_depth_mm))
+  geom_smooth(mapping = aes(x = bill_length_mm, y = bill_depth_mm)) +
+  labs(x="Bill Length (mm)",
+       y="Bill Depth (mm)",
+       title="Bill Depth vs Length")
 
 
 ```
@@ -139,7 +144,13 @@ Building off of the plot you made in Step 6, add an aesthetic to differentiate t
 ```{r}
 #| label: scatterplot-with-one-categorical-variable\
 
-
+ggplot(data = penguins) +
+  geom_point(mapping = aes(x = bill_length_mm, y = bill_depth_mm, color=species)) + 
+  geom_smooth(mapping = aes(x = bill_length_mm, y = bill_depth_mm),
+              se=F) +
+  labs(x="Bill Length (mm)",
+       y="Bill Depth (mm)",
+       title="Bill Depth vs Length")
 
 ```
 
@@ -150,6 +161,13 @@ Building off of the plot you made in Step 7, add the location of the penguins ( 
 ```{r}
 #| label: scatterplot-with-two-categorical-variables
 
+ggplot(data = penguins) +
+  geom_point(mapping = aes(x = bill_length_mm, y = bill_depth_mm, color=species, shape=island)) + 
+  geom_smooth(mapping = aes(x = bill_length_mm, y = bill_depth_mm),
+              se=F) +
+  labs(x="Bill Length (mm)",
+       y="Bill Depth (mm)",
+       title="Bill Depth vs Length")
 ```
 
 # Canvas Quiz
